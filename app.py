@@ -13,8 +13,6 @@ def index():
             return render_template("index.html",parsed_name=np)
         except KeyError:
             pass
-        else:
-            np = Name("James Polera")
     return render_template("index.html")
 
 if __name__ == "__main__":
