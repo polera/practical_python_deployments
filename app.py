@@ -1,13 +1,21 @@
-from flask import Flask
+from flask import Flask, render_template, request
 from nameparts import Name
 from json import dumps
 
 app = Flask(__name__)
 
-@app.route("/")
+@app.route("/", methods=["GET","POST"])
 def index():
-    n = Name("James Polera")
-    return dumps(n.as_dict)
+    if request.method == 'POST':
+        try:
+            name = request.form['name_to_parse'] or None
+            np = Name(name)
+            return render_template("index.html",parsed_name=np)
+        except KeyError:
+            pass
+        else:
+            np = Name("James Polera")
+    return render_template("index.html")
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
