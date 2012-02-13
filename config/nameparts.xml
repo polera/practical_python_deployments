@@ -1,0 +1,9 @@
+<uwsgi>
+  <socket>127.0.0.1:3031</socket>
+  <processes>4</processes>
+  <pythonpath>/home/james/.virtualenvs/pugip/lib/python2.7/site-packages</pythonpath>
+  <chdir>/srv/nameparts</chdir>
+  <module>app</module>
+  <callable>app</callable>
+  <no-site>true</no-site>
+</uwsgi>
