@@ -1,0 +1,14 @@
+<VirtualHost *>
+    ServerName wsgi.np.polera.org
+    Alias /static /var/www/nameparts/static
+
+    WSGIDaemonProcess nameparts user=www-data group=www-data threads=5
+    WSGIScriptAlias / /var/www/nameparts/nameparts.wsgi
+
+    <Directory /var/www/nameparts>
+        WSGIProcessGroup nameparts
+        WSGIApplicationGroup %{GLOBAL}
+        Order deny,allow
+        Allow from all
+    </Directory>
+</VirtualHost>
