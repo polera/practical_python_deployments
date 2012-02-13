@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+    <head>
+        <link rel="stylesheet" href="/static/style.css"/>
+        <title>nameparts</title>
+    </head>
+<body>
+<div id="header"><a href="/"><img src="/static/nameparts.png" border="0"/></a></div>
+<div id="content">
+    <form method="post" action="/">
+        <label>Enter a name:</label>
+        <input type="text" name="name_to_parse" class="parsebox"/>
+        <input type="submit" value="Parse it!" class="submit"/>
+    </form>
+
+    {% if parsed_name %}
+    <h2>{{parsed_name.full_name}}</h2>
+    <ul>
+        {% if parsed_name.salutation %}
+        <li>Salutation: {{ parsed_name.salutation }}</li>
+        {% endif %}
+        <li>First: {{ parsed_name.first_name}}</li>
+        {% if parsed_name.middle_name %}
+        <li>Middle: {{parsed_name.middle_name}}</li>
+        {% endif %}
+        <li>Last: {{parsed_name.last_name}}</li>
+        {% if parsed_name.generation %}
+        <li>Generation: {{parsed_name.generation}}</li>
+        {% endif %}
+        {% if parsed_name.suffix %}
+        <li>Suffix: {{parsed_name.suffix}}</li>
+        {% endif %}
+    </ul>
+    {% else %}
+    <h3> Hey, enter a name to parse in the box above.</h3>
+    {% endif %}
+</div>
+</body>
+</html>
